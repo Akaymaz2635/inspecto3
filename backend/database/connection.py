@@ -11,6 +11,7 @@ _SCHEMA = _BASE / "backend" / "database" / "schema.sql"
 async def get_db():
     async with aiosqlite.connect(str(DB_PATH)) as db:
         db.row_factory = aiosqlite.Row
+        await db.execute("PRAGMA journal_mode = WAL")
         await db.execute("PRAGMA foreign_keys = ON")
         yield db
 
@@ -318,6 +319,7 @@ async def _migrate_db(db: aiosqlite.Connection) -> None:
 async def init_db():
     sql = _SCHEMA.read_text(encoding="utf-8")
     async with aiosqlite.connect(str(DB_PATH)) as db:
+        await db.execute("PRAGMA journal_mode = WAL")
         await db.executescript(sql)
         await _migrate_db(db)
         await db.commit()
