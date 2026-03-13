@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muayene Yönetim Sistemi</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button id="sidebar-hamburger" class="sidebar-hamburger" title="Menüyü Genişlet">&#9776;</button>
+
+      <div class="sidebar-logo">
+        <div class="logo-icon">&#9881;</div>
+        <div class="logo-text">
+          <span class="logo-title">QualityCtrl</span>
+          <span class="logo-subtitle">Muayene Sistemi</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="#/" class="nav-link" data-route="dashboard">
+              <span class="nav-icon">&#9664;</span>
+              <span class="nav-label">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#/inspections" class="nav-link" data-route="inspections">
+              <span class="nav-icon">&#128203;</span>
+              <span class="nav-label">Muayeneler</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#/settings" class="nav-link" data-route="settings">
+              <span class="nav-icon">&#9881;</span>
+              <span class="nav-label">Ayarlar</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="#/inspections" id="open-insp-indicator" class="open-insp-indicator hidden">
+        <span class="open-insp-dot"></span>
+        <span id="open-insp-text"></span>
+      </a>
+
+      <div class="sidebar-footer">
+        <span class="version-label">v1.0.0</span>
+        <button id="tablet-toggle-btn" class="tablet-toggle-btn" title="Görünüm değiştir">
+          <span class="tablet-toggle-icon">📱</span>
+          <span class="tablet-toggle-label">Tablet Modu</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Sidebar backdrop (tablet mode expanded) -->
+    <div id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div id="page-root">
+        <div class="loading">Yükleniyor...</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div id="modal-container" class="modal-container">
+      <!-- injected by modal.open() -->
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
